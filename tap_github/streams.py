@@ -63,7 +63,6 @@ class Streams(Enum):
         [
             AnonymousContributorsStream,
             AssigneesStream,
-            CollaboratorsStream,
             CommitCommentsStream,
             CommitsStream,
             CommunityProfileStream,
