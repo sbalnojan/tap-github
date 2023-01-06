@@ -62,8 +62,6 @@ class Streams(Enum):
         {"repositories", "organizations", "searches"},
         [
             RepositoryStream,
-            StargazersGraphqlStream,
-            StargazersStream,
 
         ],
     )
