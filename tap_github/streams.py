@@ -12,7 +12,6 @@ from tap_github.organization_streams import (
 from tap_github.repository_streams import (
     AnonymousContributorsStream,
     AssigneesStream,
-    CollaboratorsStream,
     CommitCommentsStream,
     CommitsStream,
     CommunityProfileStream,
