@@ -132,10 +132,8 @@ class RepositoryStream(GitHubRestStream):
         context
         """
         if "searches" in self.config:
-            query=Template(s["query"]) 
-            expanded_query= query.substitute(os.environ)
             return [
-                {"search_name": s["name"], "search_query": expanded_query}
+                {"search_name": s["name"], "search_query": Template(s["query"]).substitute(os.environ)}
                 for s in self.config["searches"]
             ]
         if "repositories" in self.config:
