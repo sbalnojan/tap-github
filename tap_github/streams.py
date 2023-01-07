@@ -61,7 +61,7 @@ class Streams(Enum):
         for query in valid_queries:
             expanded_query= query.substitute(os.environ)
             new_queries.add(expanded_query)
-        self.valid_queries = os.path.expandvars(new_queries)
+        self.valid_queries = new_queries
         self.streams = streams
 
     REPOSITORY = (
