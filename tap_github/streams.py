@@ -59,6 +59,7 @@ class Streams(Enum):
     def __init__(self, valid_queries: Set[str], streams: List[Type[Stream]]):
         new_queries = {}
         for query in valid_queries:
+            query = Template(query)
             expanded_query= query.substitute(os.environ)
             new_queries.add(expanded_query)
         self.valid_queries = new_queries
