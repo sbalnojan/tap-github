@@ -1,5 +1,6 @@
 from enum import Enum
 from typing import List, Set, Type
+import os
 
 from singer_sdk.streams.core import Stream
 
@@ -55,7 +56,7 @@ class Streams(Enum):
     streams: List[Type[Stream]]
 
     def __init__(self, valid_queries: Set[str], streams: List[Type[Stream]]):
-        self.valid_queries = valid_queries
+        self.valid_queries = os.path.expandvars(valid_queries)
         self.streams = streams
 
     REPOSITORY = (
