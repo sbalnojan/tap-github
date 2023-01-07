@@ -4,6 +4,8 @@ from typing import Any, Dict, Iterable, List, Optional, Tuple
 from urllib.parse import parse_qs, urlparse
 
 import requests
+import os
+from string import Template
 from dateutil.parser import parse
 from singer_sdk import typing as th  # JSON Schema typing helpers
 from singer_sdk.helpers.jsonpath import extract_jsonpath
@@ -130,8 +132,10 @@ class RepositoryStream(GitHubRestStream):
         context
         """
         if "searches" in self.config:
+            query=Template(s["query"]) 
+            expanded_query= query.substitute(os.environ)
             return [
-                {"search_name": s["name"], "search_query": s["query"]}
+                {"search_name": s["name"], "search_query": expanded_query}
                 for s in self.config["searches"]
             ]
         if "repositories" in self.config:
